@@ -1,8 +1,5 @@
 - name: Hello World Sample
   hosts: all
-  vars: 
-    arcon_cred:
-      username: '{{ lookup("env","pass") }}'
   tasks:
     - name: Get Arcon token
       uri: 
@@ -27,5 +24,5 @@
           Authorization: 'Bearer {{ data.json.access_token }}'
     - name: Hello Message
       debug:
-        msg: "Hello World!{{ arcon_cred }}"
+        msg: "Hello World!{{ pass }}"
 
