@@ -2,7 +2,7 @@
   hosts: all
   vars: 
     arcon_cred:
-      username: '{{ test2.user }}'
+      username: '{{ lookup("credentials","test2") }}'
   tasks:
     - name: Hello Message
       debug:
