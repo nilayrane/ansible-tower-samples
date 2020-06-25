@@ -3,8 +3,6 @@
   vars: 
     machine:
       username: '{{ ansible_user }}'
-    arcon_cred:
-      user: '{{ lookup("env","Username") }}'
   tasks:
     - name: Hello Message
       debug:
