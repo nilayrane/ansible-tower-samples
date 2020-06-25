@@ -1,5 +1,8 @@
 - name: Hello World Sample
   hosts: all
+  var: 
+    arcon_cred:
+      username: {{ lookup("env","user") }}
   tasks:
     - name: Hello Message
       debug:
