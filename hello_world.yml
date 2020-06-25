@@ -1,8 +1,8 @@
 - name: Hello World Sample
   hosts: all
   vars: 
-    machine:
-      username: '{{ ansible_user }}'
+    arcon_cred:
+      username: '{{ look_up("env","user") }}'
   tasks:
     - name: Hello Message
       debug:
