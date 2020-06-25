@@ -1,6 +1,6 @@
 - name: Hello World Sample
   hosts: all
-  var: 
+  vars: 
     arcon_cred:
       username: '{{ lookup("env","user") }}'
   tasks:
