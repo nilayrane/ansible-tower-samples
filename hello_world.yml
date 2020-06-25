@@ -4,6 +4,27 @@
     arcon_cred:
       username: '{{ lookup("env","pass") }}'
   tasks:
+    - name: Get Arcon token
+      uri: 
+        url: http://125.99.38.202:8197/arconToken
+        method: POST
+        status_code: 200
+        return_content: yes
+        body_format: form-urlencoded
+        body: 
+          username: "bXlsb2dpbjE="
+          password: "bXlsb2dpbkA="
+          grant_type: "password"
+      register: data
+    - name: Get access token
+      uri: 
+        url: http://125.99.38.202:8197/api/Ansible/SetAnsibleCredentials
+        method: POST
+        status_code: 200
+        return_content: yes
+        body_format: form-urlencoded
+        headers:
+          Authorization: 'Bearer {{ data.json.access_token }}'
     - name: Hello Message
       debug:
         msg: "Hello World!{{ arcon_cred }}"
